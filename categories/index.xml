@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on 码代码的小陈</title>
+    <link>https://chenlinfeng1997.github.io/categories/</link>
+    <description>Recent content in Categories on 码代码的小陈</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Oct 2020 17:00:51 +0800</lastBuildDate><atom:link href="https://chenlinfeng1997.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>opencv</title>
+      <link>https://chenlinfeng1997.github.io/categories/opencv/</link>
+      <pubDate>Sat, 17 Oct 2020 17:00:51 +0800</pubDate>
+      
+      <guid>https://chenlinfeng1997.github.io/categories/opencv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>QT</title>
+      <link>https://chenlinfeng1997.github.io/categories/qt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenlinfeng1997.github.io/categories/qt/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>码代码的小陈</title>
+    <link>https://chenlinfeng1997.github.io/</link>
+    <description>Recent content on 码代码的小陈</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Oct 2020 17:00:51 +0800</lastBuildDate><atom:link href="https://chenlinfeng1997.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows下利用CMake编译opencv及在QT中运行示例</title>
+      <link>https://chenlinfeng1997.github.io/2020/10/19/cmake_opencv.html</link>
+      <pubDate>Sat, 17 Oct 2020 17:00:51 +0800</pubDate>
+      
+      <guid>https://chenlinfeng1997.github.io/2020/10/19/cmake_opencv.html</guid>
+      <description>前言  最近想要编写一个QT程序，需要用到opencv库，花了很长时间去配置编译。网上的教程虽然很多，但我查了很多资料，不是时间太久远，就是用了没效果，因此来记录一下编译的流程，也提供给想要在windows下编译opencv的网友一个参考流程
+一、所需工具  QT（我的版本号: 5.14.2)官方下载地址 CMake（我的版本号: 3.15)官方下载地址 opencv C++ 源码（我的版本号: 3.4.10)官方下载地址  二、环境变量配置 1.打开控制面板-所有控制面板项-系统，选择高级系统设置 2.选择环境变量 3.在下方系统变量中找到Path，点击右下编辑选项
+4.点击右方新建按钮，添加如下路径（这是我的路径，需要根据自己存放的地址进行修改）
+三、编译流程 1.为了避免出现error: &amp;lsquo;::hypot&amp;rsquo; has not been declared错误，在D:\qt\Tools\mingw730_64\lib\gcc\x86_64-w64-mingw32\7.3.0\include\c++(实际情况根据你存放的路径)中的math.h文件头中加入#define _hypot hypot 2.打开Cmake工具，设定opencv源码路径以及存放编译后文件的路径，点击Configure 3.我选用MinGW编译器，选择第二个选项 4.选择C和C++编译器路径，完成后点击Finish，以下为路径示例：
+ C	D:/qt/Tools/mingw730_64/bin/gcc.exe C++	D:/qt/Tools/mingw730_64/bin/g++.exe   5.等待第一次Configure过程 6.针对我安装流程中出现的问题，对以下选项做特殊处理：
+ 取消勾选 OPENCV_ENABLE_ALLOCATOR_STATS 勾选 WITH_OPENGL 勾选 WITH_QT  点击 Configure按钮进行配置，进行第2次Configure， 7.配置选项就全变白了，点击Generate 8.显示Generating done，即已完成Makefiles文件 9.命令行(win+R文本框输入cmd)进入自定义的编译文件存放路径，执行mingw32-make -j 8 耐心等待很长一段时间，显示如下所示图即已完成编译   四、运行示例 1.在系统变量中配置环境变量，这里我用之前已经编译好的作为示例
+2.在QT中新建一个项目，基于QWidget或者QMainWindows都行，在.pro文件中增加编译文件中头文件以及动态链接库地址，如下所示代码 3.在opencv源码的samples/cpp里随便选用一个cpp文件直接复制粘贴到项目的main.cpp，这里用detect_blob.cpp示范，成功运行 </description>
+    </item>
+    
+    <item>
+      <title>winodws环境下QT实现——英文词频统计展示系统</title>
+      <link>https://chenlinfeng1997.github.io/2020/10/19/qt_project.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenlinfeng1997.github.io/2020/10/19/qt_project.html</guid>
+      <description>前言  通过一个阶段学习，自己试着敲出一个QT项目来复习和巩固学到的知识。
+一、目的及意义  在阅读文献或者分析数据的时候，词频统计能够帮助提取主要的信息，方便我们了解大体内容，有助于之后的具体分析和挖掘。
+二、功能概括 1）添加文件功能：点击添加文件按钮，即可将文件加入到分析列表当中，允许多文件以及单文件导入，目前可导入txt或doc文件； 2）全部删除功能：点击全部删除按钮，即可将文件列表中的数据全部清空； 3）修改文件功能：在每个文件导入后，点击修改文件按钮，即可将当前文件修改为选择的文件，原文件的信息在文件列表中删除； 4）删除文件功能：在每个文件导入后，点击删除文件按钮，即可将当前文件在文件列表中删除； 5）重复添加同一文件检测：导入已在文件列表中的文件后，会发出警告，此次导入失效; 6）选择显示样式选项：在点击文件列表中的某个文件之后，可以在左方选择显示的方式（饼状图或柱状图）; 7）选择显示数量选项：在点击文件列表中的某个文件之后，可以在左方选择显示的数量，即keyword的数目; 8）图例显示：当鼠标划到饼状图或柱状图每个显示数据的时候出弹出信息框，显示该keyword以及对应的词频。
+三、主要头文件 #include &amp;lt;QIcon&amp;gt;#include &amp;lt;QFileInfo&amp;gt;#include &amp;lt;QFileDialog&amp;gt;#include &amp;lt;QList&amp;gt;#include &amp;lt;QMessageBox&amp;gt;#include &amp;lt;QTime&amp;gt;#include &amp;lt;QStackedWidget&amp;gt;#include &amp;lt;QtCharts&amp;gt;#include &amp;lt;QMovie&amp;gt;#include &amp;lt;QBarSet&amp;gt;#include &amp;lt;QWidget&amp;gt;#include &amp;lt;QVector&amp;gt;#include &amp;lt;QString&amp;gt;#include &amp;lt;QMap&amp;gt;#include &amp;lt;QLabel&amp;gt;#include &amp;lt;QHBoxLayout&amp;gt;#include &amp;lt;QPushButton&amp;gt;四、展示效果 [video(video-r9u4I5QW-1604252247760)(type-bilibili)(url-https://player.bilibili.com/player.html?aid=927734305)(image-https://ss.csdn.net/p?http://i0.hdslb.com/bfs/archive/363f77956963c9c26849d0208941246b3267290a.jpg)(title-英文词频统计展示系统效果视频)]
+五、后期优化目标 1）增加导入文件的类型：由于看文献还是pdf占主要比例，之前花了很多时间尝试用poppler来把pdf的每张页面转换为图片，再通过tesseract来进行图像文字识别来获取文字信息，但是poppler支持Mingw32编译，tesseract支持MSVC进行编译，因此没法统一； 2）增加数据分析的内容：目前只是词频统计，后期可以尝试其他功能，比如增加一些图片识别功能，或者其他分析文件的功能。</description>
+    </item>
+    
+    <item>
+      <title>归档</title>
+      <link>https://chenlinfeng1997.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenlinfeng1997.github.io/archives/</guid>
+      <description>历史文章按照年月日归档</description>
+    </item>
+    
+  </channel>
+</rss>

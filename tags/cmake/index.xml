@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cmake on 码代码的小陈</title>
+    <link>https://chenlinfeng1997.github.io/tags/cmake/</link>
+    <description>Recent content in Cmake on 码代码的小陈</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 17 Oct 2020 17:00:51 +0800</lastBuildDate><atom:link href="https://chenlinfeng1997.github.io/tags/cmake/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows下利用CMake编译opencv及在QT中运行示例</title>
+      <link>https://chenlinfeng1997.github.io/2020/10/19/cmake_opencv.html</link>
+      <pubDate>Sat, 17 Oct 2020 17:00:51 +0800</pubDate>
+      
+      <guid>https://chenlinfeng1997.github.io/2020/10/19/cmake_opencv.html</guid>
+      <description>前言  最近想要编写一个QT程序，需要用到opencv库，花了很长时间去配置编译。网上的教程虽然很多，但我查了很多资料，不是时间太久远，就是用了没效果，因此来记录一下编译的流程，也提供给想要在windows下编译opencv的网友一个参考流程
+一、所需工具  QT（我的版本号: 5.14.2)官方下载地址 CMake（我的版本号: 3.15)官方下载地址 opencv C++ 源码（我的版本号: 3.4.10)官方下载地址  二、环境变量配置 1.打开控制面板-所有控制面板项-系统，选择高级系统设置 2.选择环境变量 3.在下方系统变量中找到Path，点击右下编辑选项
+4.点击右方新建按钮，添加如下路径（这是我的路径，需要根据自己存放的地址进行修改）
+三、编译流程 1.为了避免出现error: &amp;lsquo;::hypot&amp;rsquo; has not been declared错误，在D:\qt\Tools\mingw730_64\lib\gcc\x86_64-w64-mingw32\7.3.0\include\c++(实际情况根据你存放的路径)中的math.h文件头中加入#define _hypot hypot 2.打开Cmake工具，设定opencv源码路径以及存放编译后文件的路径，点击Configure 3.我选用MinGW编译器，选择第二个选项 4.选择C和C++编译器路径，完成后点击Finish，以下为路径示例：
+ C	D:/qt/Tools/mingw730_64/bin/gcc.exe C++	D:/qt/Tools/mingw730_64/bin/g++.exe   5.等待第一次Configure过程 6.针对我安装流程中出现的问题，对以下选项做特殊处理：
+ 取消勾选 OPENCV_ENABLE_ALLOCATOR_STATS 勾选 WITH_OPENGL 勾选 WITH_QT  点击 Configure按钮进行配置，进行第2次Configure， 7.配置选项就全变白了，点击Generate 8.显示Generating done，即已完成Makefiles文件 9.命令行(win+R文本框输入cmd)进入自定义的编译文件存放路径，执行mingw32-make -j 8 耐心等待很长一段时间，显示如下所示图即已完成编译   四、运行示例 1.在系统变量中配置环境变量，这里我用之前已经编译好的作为示例
+2.在QT中新建一个项目，基于QWidget或者QMainWindows都行，在.pro文件中增加编译文件中头文件以及动态链接库地址，如下所示代码 3.在opencv源码的samples/cpp里随便选用一个cpp文件直接复制粘贴到项目的main.cpp，这里用detect_blob.cpp示范，成功运行 </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>QT on 码代码的小陈</title>
+    <link>https://chenlinfeng1997.github.io/tags/qt/</link>
+    <description>Recent content in QT on 码代码的小陈</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://chenlinfeng1997.github.io/tags/qt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>winodws环境下QT实现——英文词频统计展示系统</title>
+      <link>https://chenlinfeng1997.github.io/2020/10/19/qt_project.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chenlinfeng1997.github.io/2020/10/19/qt_project.html</guid>
+      <description>前言  通过一个阶段学习，自己试着敲出一个QT项目来复习和巩固学到的知识。
+一、目的及意义  在阅读文献或者分析数据的时候，词频统计能够帮助提取主要的信息，方便我们了解大体内容，有助于之后的具体分析和挖掘。
+二、功能概括 1）添加文件功能：点击添加文件按钮，即可将文件加入到分析列表当中，允许多文件以及单文件导入，目前可导入txt或doc文件； 2）全部删除功能：点击全部删除按钮，即可将文件列表中的数据全部清空； 3）修改文件功能：在每个文件导入后，点击修改文件按钮，即可将当前文件修改为选择的文件，原文件的信息在文件列表中删除； 4）删除文件功能：在每个文件导入后，点击删除文件按钮，即可将当前文件在文件列表中删除； 5）重复添加同一文件检测：导入已在文件列表中的文件后，会发出警告，此次导入失效; 6）选择显示样式选项：在点击文件列表中的某个文件之后，可以在左方选择显示的方式（饼状图或柱状图）; 7）选择显示数量选项：在点击文件列表中的某个文件之后，可以在左方选择显示的数量，即keyword的数目; 8）图例显示：当鼠标划到饼状图或柱状图每个显示数据的时候出弹出信息框，显示该keyword以及对应的词频。
+三、主要头文件 #include &amp;lt;QIcon&amp;gt;#include &amp;lt;QFileInfo&amp;gt;#include &amp;lt;QFileDialog&amp;gt;#include &amp;lt;QList&amp;gt;#include &amp;lt;QMessageBox&amp;gt;#include &amp;lt;QTime&amp;gt;#include &amp;lt;QStackedWidget&amp;gt;#include &amp;lt;QtCharts&amp;gt;#include &amp;lt;QMovie&amp;gt;#include &amp;lt;QBarSet&amp;gt;#include &amp;lt;QWidget&amp;gt;#include &amp;lt;QVector&amp;gt;#include &amp;lt;QString&amp;gt;#include &amp;lt;QMap&amp;gt;#include &amp;lt;QLabel&amp;gt;#include &amp;lt;QHBoxLayout&amp;gt;#include &amp;lt;QPushButton&amp;gt;四、展示效果 [video(video-r9u4I5QW-1604252247760)(type-bilibili)(url-https://player.bilibili.com/player.html?aid=927734305)(image-https://ss.csdn.net/p?http://i0.hdslb.com/bfs/archive/363f77956963c9c26849d0208941246b3267290a.jpg)(title-英文词频统计展示系统效果视频)]
+五、后期优化目标 1）增加导入文件的类型：由于看文献还是pdf占主要比例，之前花了很多时间尝试用poppler来把pdf的每张页面转换为图片，再通过tesseract来进行图像文字识别来获取文字信息，但是poppler支持Mingw32编译，tesseract支持MSVC进行编译，因此没法统一； 2）增加数据分析的内容：目前只是词频统计，后期可以尝试其他功能，比如增加一些图片识别功能，或者其他分析文件的功能。</description>
+    </item>
+    
+  </channel>
+</rss>
